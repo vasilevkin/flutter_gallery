@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gallery/ui/screens/main_screen.dart';
 
 class FlutterGalleryApp extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class FlutterGalleryApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Text('Flutter Gallery'),
+      home: MainScreen(),
     );
   }
 }
