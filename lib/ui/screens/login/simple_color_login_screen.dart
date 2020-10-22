@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gallery/ui/screens/login/simple_color_constants.dart';
 
 class SimpleColorLoginScreen extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blue,
+        decoration: backgroundColor,
         child: SingleChildScrollView(
           child: Column(
             children: [
