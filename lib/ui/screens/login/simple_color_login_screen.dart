@@ -37,8 +37,8 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    roundedForm('Email'),
-                    roundedForm('Password'),
+                    roundedForm('Email', false),
+                    roundedForm('Password', true),
                   ],
                 ),
               ),
@@ -55,7 +55,7 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
     );
   }
 
-  Widget roundedForm(String text) {
+  Widget roundedForm(String text, bool obscureText) {
     return Padding(
       padding: EdgeInsets.all(10),
       child: Container(
@@ -66,6 +66,7 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
         child: Padding(
           padding: EdgeInsets.only(left: 20, right: 20, top: 5),
           child: TextFormField(
+            obscureText: obscureText,
             decoration: InputDecoration(
               labelText: text,
               border: InputBorder.none,
