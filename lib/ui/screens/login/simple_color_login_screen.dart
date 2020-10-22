@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gallery/app/app_routes.dart';
 import 'package:flutter_gallery/ui/screens/login/simple_color_constants.dart';
 
 class SimpleColorLoginScreen extends StatefulWidget {
@@ -12,46 +13,65 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: backgroundColor,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 100),
-              ClipOval(
-                  child: Image.asset('assets/login/simple_color/avatar.png')),
-              SizedBox(
-                height: 50,
+      body: Stack(
+        children: [
+          Container(
+            decoration: backgroundColor,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 100),
+                  ClipOval(
+                      child:
+                          Image.asset('assets/login/simple_color/avatar.png')),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    'Login',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Form(
+                    key: formKey,
+                    autovalidate: false,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        roundedForm('Email', false),
+                        roundedForm('Password', true),
+                      ],
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: () {},
+                    child: Text('Forgot Password?'),
+                  ),
+                  roundedButton('Login', Colors.orange[800], () {}),
+                  roundedButton('Register', Colors.transparent, () {
+                    Navigator.pushNamed(
+                      context,
+                      FlutterGalleryAppRoutes.registerSimpleColor,
+                    );
+                  }),
+                ],
               ),
-              Text(
-                'Login',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                ),
-              ),
-              Form(
-                key: formKey,
-                autovalidate: false,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    roundedForm('Email', false),
-                    roundedForm('Password', true),
-                  ],
-                ),
-              ),
-              FlatButton(
-                onPressed: () {},
-                child: Text('Forgot Password?'),
-              ),
-              roundedButton('Login', Colors.orange[800], () {}),
-              roundedButton('Register', Colors.transparent, () {}),
-            ],
+            ),
           ),
-        ),
+          SafeArea(
+              child: IconButton(
+            iconSize: 50,
+            icon: Icon(Icons.arrow_back),
+            color: Colors.orange,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )),
+        ],
       ),
     );
   }
@@ -95,7 +115,7 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
               side: BorderSide(
                 color: color,
               )),
-          onPressed: () {},
+          onPressed: onTap,
           color: color,
           child: Text(
             text.toUpperCase(),

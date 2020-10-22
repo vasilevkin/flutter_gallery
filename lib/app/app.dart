@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gallery/app/app_routes.dart';
 import 'package:flutter_gallery/ui/screens/login/login_list_screen.dart';
 import 'package:flutter_gallery/ui/screens/login/simple_color_login_screen.dart';
+import 'package:flutter_gallery/ui/screens/login/simple_color_register_screen.dart';
 import 'package:flutter_gallery/ui/screens/main_screen.dart';
 
 class FlutterGalleryApp extends StatelessWidget {
@@ -18,6 +19,8 @@ class FlutterGalleryApp extends StatelessWidget {
         FlutterGalleryAppRoutes.loginList: (_) => LoginListScreen(),
         FlutterGalleryAppRoutes.loginSimpleColor: (_) =>
             SimpleColorLoginScreen(),
+        FlutterGalleryAppRoutes.registerSimpleColor: (_) =>
+            SimpleColorRegisterScreen(),
       },
     );
   }
