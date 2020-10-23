@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery/app/app_routes.dart';
 import 'package:flutter_gallery/ui/screens/login/simple_color_constants.dart';
+import 'package:flutter_gallery/ui/widgets/simple_color_rounded_button.dart';
+import 'package:flutter_gallery/ui/widgets/simple_color_rounded_form.dart';
 
 class SimpleColorLoginScreen extends StatefulWidget {
   @override
@@ -42,8 +44,14 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        roundedForm('Email', false),
-                        roundedForm('Password', true),
+                        SimpleColorRoundedForm(
+                          text: 'Email',
+                          obscureText: false,
+                        ),
+                        SimpleColorRoundedForm(
+                          text: 'Password',
+                          obscureText: true,
+                        ),
                       ],
                     ),
                   ),
@@ -51,13 +59,16 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
                     onPressed: () {},
                     child: Text('Forgot Password?'),
                   ),
-                  roundedButton('Login', Colors.orange[800], () {}),
-                  roundedButton('Register', Colors.transparent, () {
-                    Navigator.pushNamed(
-                      context,
-                      FlutterGalleryAppRoutes.registerSimpleColor,
-                    );
-                  }),
+                  SimpleColorRoundedButton(
+                    text: 'Login',
+                    color: Colors.orange[800],
+                    onTap: _onTapLogin,
+                  ),
+                  SimpleColorRoundedButton(
+                    text: 'Register',
+                    color: Colors.transparent,
+                    onTap: _onTapRegister,
+                  ),
                 ],
               ),
             ),
@@ -76,56 +87,17 @@ class _SimpleColorLoginScreenState extends State<SimpleColorLoginScreen> {
     );
   }
 
-  Widget roundedForm(String text, bool obscureText) {
-    return Padding(
-      padding: EdgeInsets.all(10),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 5),
-          child: TextFormField(
-            obscureText: obscureText,
-            decoration: InputDecoration(
-              labelText: text,
-              border: InputBorder.none,
-            ),
-
-            // onChanged: (value) => addCityBloc.queryString.add(value),
-          ),
-        ),
-      ),
+  void _onTapLogin() {
+    Navigator.pushNamed(
+      context,
+      FlutterGalleryAppRoutes.welcomeSimpleColor,
     );
   }
 
-  Widget roundedButton(String text, Color color, Function onTap) {
-    return SizedBox(
-      width: double.infinity,
-      height: 90,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 40,
-        ),
-        child: RaisedButton(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(45.0),
-              side: BorderSide(
-                color: color,
-              )),
-          onPressed: onTap,
-          color: color,
-          child: Text(
-            text.toUpperCase(),
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+  void _onTapRegister() {
+    Navigator.pushNamed(
+      context,
+      FlutterGalleryAppRoutes.registerSimpleColor,
     );
   }
 }
